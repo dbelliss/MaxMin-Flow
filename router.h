@@ -1,20 +1,22 @@
 #ifndef ROUTER_H
 #define	ROUTER_H
-#include <vector>
+
 #include "RouterRunner.h"
-#include "QueueAr.cpp"
+
 using namespace std;
 
 
 class Router {
 private:
-
+    
     CityInfo *info;
     int num;
 public:
-    Router(CityInfo *infos, int numCities);
+    Router(CityInfo *&infos, int numCities);
     int setTransfers(Transfer **transfers);
-    CityInfo* findNeg( CityInfo* start, int* netPos, CityInfo* end, int cityNum1, int* cityNum2);
+    CityInfo* findNeg( CityInfo* start, int* netPos, CityInfo* end, int startCityNum, int* endCityNum, int* q2, bool* isNotKnown, int* h2, int* t2);
+    CityInfo* findPos(CityInfo* start, int* netNeg, CityInfo* end, int endCityNum,
+                      int* startCityNum);
 }; // class Router
 
 #endif	// ROUTER_H
